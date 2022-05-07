@@ -41,16 +41,37 @@
 
 		%>
 		<table>
-			<%
+		<%
 			if (result_select.next()){
-			%>
+				if (result_select.getBoolean(3)){ // check if admin account
+				%>
 			
-				<form method="get" action="mainPage.jsp">
-					<input type="submit" value="Log out" />
+				<form method="get" action="adminPage.jsp">
+					<input type="submit" value="Log in" />
 				</form>
-				<br>	
-			<% 
-				out.println("Found your ID and password matched in databases, login successfully!!");
+				
+				<%
+				} else if (result_select.getBoolean(4)){  // ckeck if CR account
+				%>
+					
+				<form method="get" action="CRPage.jsp">
+					<input type="submit" value="Log in" />
+				</form>
+					
+				<%
+				} else { // user account
+				%>
+					
+				<form method="get" action="userPage.jsp">
+					<input type="submit" value="Log in" />
+				</form>
+					
+				<%
+				}
+				%> <br> <%
+			
+				out.println("login successfully!!");
+				
 			}
 			else
 			{
