@@ -29,21 +29,24 @@
 		</form>
 	<br>
 	
-	
-	Press here to show all pairs of ID and password (for testing purpose):
-		<form method="get" action="showAll.jsp">
-	
-			<%-- 
-			<input type="radio" name="command" value="beers"/>Let's have a beer! Click here to see the beers.
-			<br>
-			<input type="radio" name="command" value="bars"/>Let's go to a bar! Click here to see the bars.
-			<br>
-			--%>
-			
-			<input type="submit" value="submit" />
-		
+	If you don't have account, please register first:
+		<form method="get" action="register.jsp">
+			<table>
+				<tr>    
+					<td>Your ID:</td><td><input type="text" name="registerID"></td>
+				</tr>
+				<tr>
+					<td>Your Password:</td><td><input type="text" name="registerPassword"></td>
+				</tr>
+			</table>
+			<input type="submit" value="Go Register!">
 		</form>
 	
+	<br>
+	Press here to show all pairs of ID and password (for testing purpose):
+		<form method="get" action="showAll.jsp">			
+			<input type="submit" value="submit" />
+		</form>
 	<br>
 	
 	</body>

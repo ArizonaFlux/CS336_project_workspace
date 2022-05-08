@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 
+<!-- notification: -->
+<!-- <script>{alert("helloeojefoi")}</script> -->
 
 <body>
 		<%
@@ -26,7 +28,7 @@
 		String newID = request.getParameter("loginID");
 		String newPassword = request.getParameter("loginPassword");
 
-		//Make an select statement for the UserInfo table:
+		//Make a select statement for the UserInfo table:
 		String select = "SELECT * FROM UserInfo where ID = ? and password = ?";
 		
 		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
@@ -44,42 +46,46 @@
 		<%
 			if (result_select.next()){
 				if (result_select.getBoolean(3)){ // check if admin account
+					
 				%>
-			
+					Welcome! Proceed to admin page
+					<br>
 				<form method="get" action="adminPage.jsp">
-					<input type="submit" value="Log in" />
+					<input type="submit" value="Proceed" />
 				</form>
 				
 				<%
 				} else if (result_select.getBoolean(4)){  // ckeck if CR account
-				%>
 					
+				%>
+					Welcome! Proceed to customer representative page
+					<br>
 				<form method="get" action="CRPage.jsp">
-					<input type="submit" value="Log in" />
+					<input type="submit" value="Proceed" />
 				</form>
 					
 				<%
 				} else { // user account
 				%>
-					
+					Welcome! Proceed to auction page
+					<br>
 				<form method="get" action="userPage.jsp">
-					<input type="submit" value="Log in" />
+					<input type="submit" value="Proceed" />
 				</form>
 					
 				<%
 				}
 				%> <br> <%
 			
-				out.println("login successfully!!");
-				
 			}
 			else
 			{
 				out.println("login failed!!");%>
 			
-				<form method="get" action="mainPage.jsp">
+				<form method="get" action="homePage.jsp">
 					<input type="submit" value="Try again" />
 				</form>
+
 			
 			<%}
 			db.closeConnection(con);

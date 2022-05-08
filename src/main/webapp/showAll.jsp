@@ -31,24 +31,18 @@
 		<!--  Make an HTML table to show the results in: -->
 		<table>
 		<tr>    
-			<td>ID</td>
-			<td>password
-			<%--
-			<%if (entity.equals("beers"))
-					out.print("Manufacturer");
-				else
-					out.print("Address");
-				%>
-			</td> 
-			--%>
-				
-		</tr>
+			<td>ID        </td>
+			<td>password  </td>
+			<td>isAdmin   </td>
+			<td>isCR      </td>
 			<%
 			//parse out the results
 			while (result.next()) { %>
 				<tr>    
 					<td><%= result.getString("ID") %></td>
 					<td><%= result.getString("password")%></td>
+					<td><%= result.getBoolean("isAdmin")%></td>
+					<td><%= result.getBoolean("isCR")%></td>
 				</tr>
 				
 
