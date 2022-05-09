@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Home Page</title>
+		<title>Registering...</title>
 	</head>
 <body>
 	<%
@@ -35,18 +35,33 @@
 		ps0.setString(1, newID);
 		ps0.setString(2, newPassword);
 		
-		//Run the query against the DB
-		ps0.executeUpdate();
+		String select = "SELECT * FROM UserInfo WHERE ID =\"" + newID + "\"";
+		
+		ResultSet result_select = stmt.executeQuery(select);
+		
+		if (!result_select.next()){
+			//Run the query against the DB
+			ps0.executeUpdate();
+			out.println("Register successful!");
+		%>
+		
+		
+		<%
+		} else {
+			out.println("Failed, user name has already been taken");
+		}
+		
+		
 
-		} catch (Exception e) {
+	} catch (Exception e) {
 			out.print(e);
-		}%>
+	}%>
 	
-	Register successful!
+	
 	<br>
 	
 	<form method="get" action="homePage.jsp">
-			<input type="submit" value="Log out" />
+			<input type="submit" value="Go back to the home page" />
 	</form>
 		
 		

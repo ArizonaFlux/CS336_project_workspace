@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Logining...</title>
 </head>
 
 <!-- notification: -->
@@ -30,6 +30,9 @@
 
 		//Make a select statement for the UserInfo table:
 		String select = "SELECT * FROM UserInfo where ID = ? and password = ?";
+		String addCurrentUser = "INSERT INTO UserStack(ID) value (\"" + newID + "\")";
+		
+		stmt.executeUpdate(addCurrentUser);
 		
 		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 		PreparedStatement ps0 = con.prepareStatement(select);
@@ -80,7 +83,14 @@
 			}
 			else
 			{
-				out.println("login failed!!");%>
+				%>
+				login failed!!
+				<br><br>
+				Check if you input incorrect ID or password
+				<br><br>
+				If you don't have an account yet, please register first
+				
+				<br><br>
 			
 				<form method="get" action="homePage.jsp">
 					<input type="submit" value="Try again" />

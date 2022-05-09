@@ -12,7 +12,25 @@
 	</head>
 
 	<body>
+	Welcome to the auction.com
+	<br>
+	Login to start your auction journey!!
+	<br>
+	<br>
 	
+	<%
+	
+			//Get the database connection
+			ApplicationDB db = new ApplicationDB();	
+			Connection con = db.getConnection();		
+			//Create a SQL statement
+			Statement stmt = con.createStatement();
+
+			String purgeUserStack = "delete from Userstack";
+			//Run the query against the database.
+			stmt.executeUpdate(purgeUserStack);
+	
+		%>
 	
 	Please input your ID and password to login:
 	<br>

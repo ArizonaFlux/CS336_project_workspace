@@ -9,10 +9,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Home Page</title>
+		<title>Placing bid...</title>
 		
 	</head>
 <body>
+		
+	Hello, User:
+	<br>
 		
 	<%
 	try {
@@ -39,6 +42,17 @@
 		//Run the query against the DB
 		ResultSet result_select = ps0.executeQuery();
 		
+		String getLoginingUser = "SELECT * FROM UserStack";
+		//ResultSet _loginingUser = stmt.executeQuery(getLoginingUser);
+		PreparedStatement ps1 = con.prepareStatement(getLoginingUser);
+		ResultSet _loginingUser = ps1.executeQuery();
+		
+		_loginingUser.next();
+		
+		String loginingUser = _loginingUser.getString(1);
+		
+		out.println(" -- " + loginingUser + " -- ");
+		
 		if (result_select.next()) {
 			//if new bid is higher than old highest bid
 			if (newBid > result_select.getFloat("currentBid")) {
@@ -47,8 +61,8 @@
 				
 				//update bid price in Auction table
 				String update = "UPDATE Auction SET currentBid = " + newBid + " WHERE AID = " + newAID;
-				PreparedStatement ps = con.prepareStatement(update);
-				ps.executeUpdate();
+				PreparedStatement ps2 = con.prepareStatement(update);
+				ps2.executeUpdate();
 				
 				//
 				
@@ -58,12 +72,12 @@
 				String insert = "INSERT INTO BidHistory(AID, currentBid)" + "VALUES (?, ?)";
 
 				
-				PreparedStatement ps1 = con.prepareStatement(insert);
+				PreparedStatement ps3 = con.prepareStatement(insert);
 				
-				ps1.setString(1, newAID);
-				ps1.setFloat(2, newBid);
+				ps3.setString(1, newAID);
+				ps3.setFloat(2, newBid);
 				
-				ps1.executeUpdate();
+				ps3.executeUpdate();
 				
 				con.close();
 			}

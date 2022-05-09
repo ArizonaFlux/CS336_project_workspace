@@ -13,8 +13,33 @@
 <body>
 
 	Hello, administrator
+	
 	<br>
-	Found your ID and password matched in databases, login successfully!!
+	<br>
+	
+	Press here to alter user's Customer Representative permission
+		<form method="get" action="authorizeCRPage.jsp">
+			
+			<input type="submit" value="Go change CR permission" />
+		
+		</form>
+	
+	<br>
+
+
+	Press here to check out the Best Buyers from this auction.
+		<form method="get" action="bestBuyers.jsp">
+			
+			<input type="submit" value="Go check out" />
+		
+		</form>
+	
+	<br>
+	Press here to proceed to user interface
+		<form method="get" action="userPage.jsp">			
+			<input type="submit" value="login as user" />
+		</form>
+	<br>
 	
 	<form method="get" action="homePage.jsp">
 		<input type="submit" value="Log out" />
